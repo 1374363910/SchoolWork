@@ -1,0 +1,316 @@
+/**
+ * Created by Administrator on 2018/7/13 0013.
+ */
+var persentHeight;
+var pageIndex = 1;//加载更多请求页数
+function request(url,async,type,data,callback){
+    $.ajax({
+        url:url,
+        async:async ,
+        type: type,
+        data:data,
+        dataType:"json",
+        success:callback,
+        error: function (e,e2,e3) {
+           
+        }
+    })
+}
+// csdnapp
+function checkCsdnApp(callback) {
+    var agent = navigator.userAgent.toLowerCase();
+    var cookie = document.cookie.toLowerCase();
+    var isCsdnApp = sessionStorage.getItem("csdnapp");
+    if (cookie.indexOf('x-os=ios') != -1 || isCsdnApp == "1") {
+        sessionStorage.setItem("csdnapp", "1");
+        // document.cookie = "useragent=csdnapp;path=/";
+        $('#csdn-toolbar,#m_toolbar_left').addClass('none_import');
+        $('.container-fluid').hide();
+        $('.content,.banner_mobil,#desc_mobil,#lesson_detail_m .img_box,.chat_art').css('margin-top', '0px');
+        callback();
+    } else {
+        $('#csdn-toolbar,#m_toolbar_left').show();
+        $('.container-fluid').show();
+    }
+}
+//markdown解析,
+function markResolve(htmlCo){
+    var mkd = $('.mark_content');
+    var converter = new showdown.Converter();
+    var htmlCon = converter.makeHtml(mkd.html());
+    mkd.html(htmlCon);
+    mkd.removeClass('visibility_hide');
+}
+function markResolve_2(mkd_1,mkd_2){
+    var converter = new showdown.Converter();
+    var htmlCon = converter.makeHtml(mkd_1.html());
+    mkd_1.html(htmlCon);
+    mkd_1.removeClass('visibility_hide');
+    var htmlCon = converter.makeHtml(mkd_2.html());
+    mkd_2.html(htmlCon);
+    mkd_2.removeClass('visibility_hide');
+}
+//进度计算
+function heightGets(){
+    var winHeight = $(window).height();
+    var docHeight = $(document).height();
+    var markHeight = $('.mark_content').height();
+    var scHeight;
+    var barHeight = winHeight/docHeight*winHeight;
+    $(window).scroll(function () {
+        scHeight = $(document).scrollTop();
+        persentHeight = ((scHeight+barHeight+800)/docHeight).toFixed(2);
+        //console.log(persentHeight);
+    })
+    return persentHeight;
+}
+//url参数获取
+function getUrlRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        let strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+// 自定义创建随机串 自定义个数0 < ? < 32 
+function create_noncestr() {
+        var str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var val = "";
+        for (var i = 0; i < 16; i++) {
+            val += str.substr(Math.round((Math.random() * 10)), 1);
+        }
+        return val;
+}
+function create_timestamp(){
+    return new Date().getSeconds();
+}
+function create_sign(nocestr,ticket,timestamp,url){
+    var signature = "";
+    // 这里参数的顺序要按照 key 值 ASCII 码升序排序
+    var s = "jsapi_ticket=" + ticket + "&noncestr=" + nocestr + "&timestamp=" + timestamp + "&url=" + url;
+    return SHA2(s);
+}
+//微信分享
+function wxShare(title,desc,link,imgUrl){
+    // https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx8263bf55c7e4c553&secret=52d17f9881378a153c6807b4f37be42e
+    // https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=16_cHzIx9AJdt1pT_kqKfeaW7F3ERo4aZcogHG_2AkbXjG8WWGIFpsU4McRib60mhOFbNwUuVYjeKbSF918KMoOrwsDDhP8XewBnaRECp1xuLDJCtrjaFu87gVv0yTPxqBYsOdeju1EDfQEis2zFWAgACAQHL&type=jsapi
+    var token = '16_cHzIx9AJdt1pT_kqKfeaW7F3ERo4aZcogHG_2AkbXjG8WWGIFpsU4McRib60mhOFbNwUuVYjeKbSF918KMoOrwsDDhP8XewBnaRECp1xuLDJCtrjaFu87gVv0yTPxqBYsOdeju1EDfQEis2zFWAgACAQHL';
+    var ticket = 'kgt8ON7yVITDhtdwci0qeYrfcUNOdE5hSPg4T1WPraq_QO51AcOcWMq2eBB92VpR-SenkX6YVxVskyeqLjDvzQ';
+    var timestamp = create_timestamp();
+    var noncestr = create_noncestr();
+    var mysign = create_sign(noncestr, ticket, timestamp,link);
+    //分享
+    //https://wechatapi.csdn.net/api/wechat/share/id/wx7ba47eadabd9ddde
+    // request('',true,"GET",{},function(data){
+    //    wx.checkJsApi({
+    //       jsApiList: ["onMenuShareAppMessage", "updateTimelineShareData"
+    //           , 'updateAppMessageShareData', "onMenuShareWeibo", "onMenuShareAppMessage", "onMenuShareTimeline"
+    //       ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+    //       success: function(res) {
+    //           // 以键值对的形式返回，可用的api值true，不可用为false
+    //           // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+    //       }
+    //    });
+       wx.config({
+           debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+           appId: 'wx8263bf55c7e4c553', // 必填，公众号的唯一标识
+           timestamp: timestamp, // 必填，生成签名的时间戳
+           nonceStr: noncestr, // 必填，生成签名的随机串
+           signature: mysign, // 必填，签名
+           jsApiList: ["updateAppMessageShareData", "updateTimelineShareData", "onMenuShareAppMessage", "onMenuShareWeibo", "onMenuShareAppMessage", "onMenuShareTimeline"] // 必填，需要使用的JS接口列表
+       });
+        wx.ready(function () {
+            wx.updateAppMessageShareData({
+                title: title, // 分享标题
+                desc: 'GitChat', // 分享描述
+                link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                }
+            });
+            wx.updateTimelineShareData({
+                title: title, // 分享标题
+                link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: '', // 分享图标
+                success: function () {
+                    // 设置成功
+                }
+            });    
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: imgUrl, // 分享图标
+                type: '', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户点击了分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareWeibo({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            wx.onMenuShareTimeline({
+                title: title, // 分享标题
+                link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: imgUrl, // 分享图标
+                success: function () {
+                    // 用户点击了分享后执行的回调函数
+                },
+            });
+            wx.onMenuShareAppMessage({
+                title: title, // 分享标题
+                desc: desc, // 分享描述
+                link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: imgUrl, // 分享图标
+                type: link, // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户点击了分享后执行的回调函数
+                }
+            });
+            wx.error(function(res){
+                alert("something error!")
+            });
+        })
+    // });
+}
+// 检测utm_source
+function checkUtmSource(){
+    try{
+        if (utmSourceUrl && utmSourceUrl != '') {
+            $('a').each(function () {
+                if ($(this).attr('href').indexOf('?') == -1) {
+                    $(this).attr('href', $(this).attr('href') + '?utm_source=' + utmSourceUrl);
+                } else {
+                    $(this).attr('href', $(this).attr('href') + '&utm_source=' + utmSourceUrl);
+                }
+            });
+        }
+    }catch(e){}
+}
+// 跳转csdnvip页面
+// function toCsdnVip(){
+//     if (utmSourceUrl && utmSourceUrl != '') {
+//         window.location.href = 'https://download.csdn.net/vip_code?utm_source=' + utmSourceUrl;
+//     } else {
+//         window.location.href = 'https://download.csdn.net/vip_code';
+//     }
+// }
+$(function () {
+    checkUtmSource();
+    // wxShare('GitChat','GitChat 是一款基于微信平台的知识分享产品。通过这款产品我们希望改变IT知识的学习方式。',window.location.href,'');
+})
+//支付
+var loadingIndex=0;
+function payfor(pid,gid,payMoney){
+    var agent = navigator.userAgent.toLowerCase();
+    var isCsdnApp = sessionStorage.getItem("csdnapp");
+    if(agent.indexOf('csdnapp') != -1 || isCsdnApp=="1"){
+        sessionStorage.setItem("csdnapp","1");
+        cart.buyNow({
+            product_id:pid,
+            goods_id:gid,
+            num:1,
+            flag:9,
+            supplier_id:0,
+            supplier:'',
+            attribute_json:'',
+            error_function:function(data){
+                
+            }
+        });
+    }else{
+        cart.qrPay({
+            product_id: pid, // 1达人课，2专题，3文章
+            goods_id: gid, // 商品id 必填
+            num: 1, // 购买数量 可选，默认1
+            request_type: 4,// 请求类型 1、仅请求支付宝二维码 2、仅请求微信二维码 3、同时请求支付宝和微信二维码
+            flag: 9, // 业务线gitchat
+            success_function: show_pay_code,// 成功回调方法名
+            error_function: show_pay_error,// 失败回调方法名
+            timeout_function: show_pay_timeout,// 超时回调方法名
+            use_cache: true// true为使用缓存，为空或其他不使用缓存
+        });
+        //生成二维码图片
+        function generate_code(code_url) {
+            //参数1表示图像大小，取值范围1-10；参数2表示质量，取值范围'L','M','Q','H'
+            var qr = qrcode(6, 'M');
+            qr.addData(code_url);
+            qr.make();
+            return qr.createImgTag(3, 3);
+        }
+        function show_pay_code(type, data) {
+            if (data.status != 1) {
+                layer.alert('二维码获取失败,请刷新页面后重试!',{
+                    closeBtn:0
+                },function(){
+                    location.reload();
+                });
+                return false;
+            }
+            let wxUrlImg = generate_code(data.pay_url);
+            $('.layui-layer-content .wx_pay').html(wxUrlImg);
+            layer.close(loadingIndex);
+        }
+
+        function show_pay_error(data) {
+            //alert('二维码获取失败,请刷新页面后重试!');
+            //if (window.console && console.log) {
+            //    console.log(data.status + " show_pay_error");
+            //}
+            layer.close(loadingIndex);
+            layer.alert('二维码获取失败，请刷新页面后重试!',{
+                closeBtn:0
+            },function(){
+                location.reload();
+            });
+        }
+
+
+        function show_pay_timeout() {
+            layer.close(loadingIndex);
+            layer.alert('二维码已过期，请刷新页面后重试!',{
+                closeBtn:0
+            },function(){
+                location.reload();
+            });
+        }
+        layer.open({
+            type:1,
+            skin:'pay',
+            area:'340px',
+            closeBtn:1,
+            title:'支付',
+            anim:2,
+            shadeClose:true,
+            content:`<div class="pay_head">需支付<span>￥${payMoney}</span></div>
+                    <div class="con">
+                        <div>
+                            <div class="wx_pay_view">
+                                <img src="https://images.gitbook.cn/FrWLnf6dizmgu4HO5rz56aYOBQ1n"> <img src="https://images.gitbook.cn/Fp_zggUGYFXrv9B8FCrAyl5s_G49"> <span>扫码快捷支付</span>
+                            </div>
+                            <div class="wx_pay_box">
+                                <div class="wx_pay">
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+        })
+        loadingIndex = layer.load(0, {shade: false})
+    }
+}

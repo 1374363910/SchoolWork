@@ -10,54 +10,217 @@
   </head>
 
   <body>
-    <nav class = "navbar navbar-default navbar-fixed-top" role = "navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-        <div class="navbar-header">  
-          <button type="button" class="navbar-toggle" data-toggle = "collapse"  data-target = "#target-menu">  
-            <span class="sr-only">切换导航</span>  
-            <span class="icon-bar"></span>  
-            <span class="icon-bar"></span>  
-            <span class="icon-bar"></span>  
-          </button>  
-          <a href="#" class="navbar-brand">中华美食</a>  
-        </div>  
-        <div class="collapse navbar-collapse" id = "target-menu">  
-          <ul class="nav navbar-nav navbar-right">  
-            <li><a href="index.html">首页</a></li>  
-            <li><a href="menu.html">菜谱</a></li>  
-            <li class="active"><a href="restaurant.html">菜馆</a></li>  
-            <li><a href="community.html">社区</a></li>  
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#target-menu"
+          >
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">中华美食</a>
+        </div>
+        <div class="collapse navbar-collapse" id="target-menu">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="menu.html">菜谱</a></li>
+            <li class="active"><a href="restaurant.html">吃货</a></li>
+            <li><a href="community.html">社区</a></li>
           </ul>
         </div>
-      </div>  
-    </nav>    
-    <div class="main">
-      <div class="container">
-        <div class="article">
+      </div>
+    </nav>
+    <div id="main">
+      <div id="features" class="text-center">
+        <div class="container">
+          <div class="section-title">
+            <h2>吃货的修养</h2>
+          </div>
+          <div class="video">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4">
+                <div class="videolist" path="videos/1.mp4">
+                  <h3>100秒看清古代吃货都吃啥</h3>
+                  <img src="images/1.png" />
+                  <p>
+                    苏丹红鸭蛋、地沟油、瘦肉精这些东西让现在的吃货十分苦恼，有人说了还是古代好，吃的放心，但是古代的食物真的就能满足你的吃货心吗？今天就让我们来看看古代人究竟都吃些什么。
+                  </p>
+                  <img src="images/play.png" class="videoed" />
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <div class="videolist" path="videos/2.mp4">
+                  <h3>古代诗人怎么解决吃肉问题</h3>
+                  <img src="images/2.png" />
+                  <p>
+                    老坛东坡肉，九九八十一分钟秘制而成，这美味，不敢相信
+                  </p>
+                  <img src="images/play.png" class="videoed" />
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <div class="videolist" path="videos/3.mp4">
+                  <h3>古代这些吃货，没人能够超越</h3>
+                  <img src="images/3.png" />
+                  <p>
+                    中国自古产吃货，但凡有点名气的文人墨客，不写点谈吃的诗文都不好意思说自己是文人，其中佼佼者，有吃货始祖孔子、全能吃货苏轼、清朝头号美食网红袁枚等等，不过他们可能都比不上这位…
+                  </p>
+                  <img src="images/play.png" class="videoed" />
+                </div>
+              </div>
+            </div>
+            <div class="videos"></div>
+          </div>
+        </div>
+      </div>
+      <div class="section-title text-center">
+        <h2>吃货的故事</h2>
+      </div>
+      <div id="about">
+        <div class="container-fluid">
           <div class="row">
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
-            <div class="col-sm-1 test">1</div>
+            <div class="col-xs-12 col-md-6">
+              <div class="row">
+                <img src="images/4.jpeg" class="about-img" />
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-4 col-md-offset-1">
+              <div class="about-text">
+                <div class="section-title">
+                  <h2>公子宋：食指大动</h2>
+                </div>
+                <p>
+                  据说公子宋在每次将有美食的时候，食指都会颤动。有一次，楚国给郑国赠送了一只鼋，公子宋和子家去拜见郑灵公时，公子宋突然食指大动，公子宋告诉子家，今日必定有美食。果不其然，郑灵公下令要与百官同食鼋汤，公子宋与子家相视而笑。灵公知道原因后，心中不悦，故意不将汤分给公子宋，没想到公子宋竟然走到郑灵公的座位前，把食指伸到鼎里，用食指沾汤来食，这便是“染指”一词的来历。
+                </p>
+                <p>
+                  鼎在先秦时是权力的象征，公子宋染指灵公之鼎，使灵公顿起杀意。然而没想到的是，公子宋却先发制人，杀了郑灵公。这场由美食引发的血案并没有就此结束，后来郑国大乱，公子宋最终也被杀，暴尸于朝。
+                </p>
+              </div>
+            </div>
           </div>
           <div class="row">
-              <div class="col-sm-3 test">1</div>
-              <div class="col-sm-3 test">1</div>
-              <div class="col-sm-3 test">1</div>
-              <div class="col-sm-3 test">1</div>
+            <div class="col-xs-12 col-md-6 col-md-push-6">
+              <div class="row">
+                <img src="images/5.jpeg" class="about-img" />
+              </div>
             </div>
+            <div class="col-xs-12 col-md-4 col-md-offset-1 col-md-pull-6">
+              <div class="about-text">
+                <div class="section-title">
+                  <h2>刘安：我为豆腐代言</h2>
+                </div>
+                <p>
+                  刘安史称淮南王，是汉高祖刘邦的的孙子。同时也是西汉的思想家、文学家，由他所著的《离骚传》是中国最早对屈原及其《离骚》作高度评价的著作。刘安从小博学多才，爱好读书治学，学艺弹琴，有喜欢与宾客交游，他曾招宾客方术之士数千人，编写《鸿烈》亦称《淮南子》，是我国思想史上划时代的学术巨著。另外他还是世界上最早尝试热气球升空的实践者，也是中国豆腐的创始人。
+                </p>
+                <p>
+                  说起豆腐的发明，与刘安崇信道教有着很重要的关系。刘安爱好炼丹，而在炼丹中需要以黄豆汁培育丹苗。偶然的一次，豆汁与石膏在安排下相遇，产生了不可遏制的化学效应，形成了一种鲜嫩绵滑的块状物，食之味道鲜美，于是豆腐便在这样的时空下应运而生，此后，还发展成了民间百姓喜闻乐见的一道美食。
+                </p>
+              </div>
+            </div
+          </div>
+        </div>
+      </div>
+      <div id="poetry">
+        <div class="container">
+          <div class="section-title text-center">
+            <h2>吃货的诗词</h2>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <div class="poetry-section">
+                <div class="poetry-item">
+                  <div class="poetry-item-name">《夏日田园杂兴》范成大</div>
+                  <div class="poetry-item-description">
+                    二麦俱秋斗百钱，田家唤作小丰年。饼炉饭甑无饥色，接到西风熟稻天。
+                  </div>
+                </div>
+                <div class="poetry-item">
+                  <div class="poetry-item-name">《渔歌子》李珣</div>
+                  <div class="poetry-item-description">
+                    水为乡，蓬作舍，鱼羹稻饭常餐也 。
+                  </div>
+                </div>
+                <div class="poetry-item">
+                  <div class="poetry-item-name">《食蒸饼作》杨万里</div>
+                  <div class="poetry-item-description">
+                    何家笼饼须十字，萧家炊饼须四破。老夫饥来不可那，只要鹘仑吞一个。
+                  </div>
+                </div>
+                <div class="poetry-item">
+                  <div class="poetry-item-name">《慈湖夹阻风》苏轼</div>
+                  <div class="poetry-item-description">
+                    此生归路愈茫然，无数青山水拍天。犹有小船来卖饼，喜闻墟落在山前。
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="poetry-section">
+                <div class="poetry-item">
+                  <div class="poetry-item-name">《立春》杜甫</div>
+                  <div class="poetry-item-description">
+                    春日春盘细生菜，忽忆两京梅发时。盘出高门行白玉，菜传纤手送青丝。
+                  </div>
+                </div>
+                <div class="poetry-item">
+                  <div class="poetry-item-name">《清平乐》辛弃疾</div>
+                  <div class="poetry-item-description">
+                    云子饭，水晶瓜。林间携客更烹茶。
+                  </div>
+                </div>
+                <div class="poetry-item">
+                  <div class="poetry-item-name">《蝶恋花》李清照</div>
+                  <div class="poetry-item-description">
+                    随意杯盘虽草草。酒美梅酸，恰称人怀抱。
+                  </div>
+                </div>
+                <div class="poetry-item">
+                  <div class="poetry-item-name">《茶》元稹</div>
+                  <div class="poetry-item-description">
+                    茶，香叶，嫩芽。慕诗客，爱僧家。碾雕白玉，
+                    罗织红纱。铫煎黄蕊色，碗转麹尘花。夜后邀陪明月，
+                    晨前命对朝霞。洗尽古今人不倦，将知醉后岂堪夸。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="gallery">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-6 col-sm-3">
+              <div class="row gallery-item"><img src="images/6.jpg" /></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="row gallery-item"><img src="images/7.jpg" /></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="row gallery-item"><img src="images/8.jpg" /></div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="row gallery-item"><img src="images/9.jpg" /></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <footer>
+      <div class="container text-center">
+        <p>This page is made by <b>ZhangZexin</b>.</p>
+      </div>
+    </footer>
+
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/flv.min.js"></script>
+    <script src="js/js.js"></script>
   </body>
 </html>

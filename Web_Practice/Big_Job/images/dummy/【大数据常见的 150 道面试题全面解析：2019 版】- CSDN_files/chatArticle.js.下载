@@ -1,0 +1,289 @@
+//加载相关文章推荐
+function collectRightRequest(activityId) {
+    request(`/activities/recommend`, true, 'GET', {activityId:activityId}, function (data) {
+        var htmlStr = '';
+        for (let item of data.value) {
+            htmlStr += `<a class="collect_right animated lightSpeedIn" href="/activity/${item.activityId}">`
+            htmlStr += `<div class="collect_right_infos">
+                                <div class="collect_right_title">${item.title}</div>
+                                <span class="collect_right_info">${item.authorName} · ${item.authorTitle}</span>
+                                <div class="collect_right_info"style="display:none;">
+                                    <span class="color_blue">${item.totalReadersNum}</span><span> min阅读</span>
+                                </div>
+                            </div>
+                        </a>`
+        }
+        $('#collect_right').html(htmlStr);
+        checkUtmSource();
+    })
+}
+function isCsdnApp() {
+    var agent = navigator.userAgent.toLowerCase();
+    var cookie = document.cookie.toLowerCase();
+    var isCsdnApp = sessionStorage.getItem("csdnapp");
+    if (cookie.indexOf('x-os=ios') != -1 || isCsdnApp == "1") {
+        console.log(isCsdnApp)
+        return true;
+    } else {
+        return false;
+    }
+}
+var tagid = ''; //标签id
+var tagName = ''; //标签name
+$(function () {
+    var article = $(".art_article");
+    var memoir = $(".art_memoir");
+    var articleM = $(".art_article_m");
+    var memoirM = $(".art_memoir_m");
+    article.show();
+    memoir.hide();
+    articleM.show();
+    memoirM.hide();
+    collectRightRequest(activityId);
+    var tabFlag = false; //热门标签是否被选中
+    tagsGet();
+    var pageProp = $('.chat_art').attr('data-anal');
+    if(pageProp){
+        pageProp = JSON.parse(pageProp);
+        if(pageProp.is_free === 0 || pageProp.is_free === '0'){
+            pageProp.is_free = true
+        }else{
+            pageProp.is_free = false
+        }
+        AnalysysAgent.pageView("chat_column_read",pageProp);
+    }
+    //监听滑动显示浮动文章答疑tab
+    var cuPosition = 0;
+    var scPosition = 0;
+    var scrollDistance = 0;
+    var recommendHeight = 0;
+    if(!isCsdnApp()){
+        $(window).scroll(function () {
+            scrollDistance = $(this).scrollTop();
+            recommendHeight = $('.hot_tags').height();
+            if (memoirTxt && memoirTxt.length > 0 && scrollDistance > 1300) {
+                scPosition = scrollDistance;
+                if (scPosition - cuPosition > 0) {
+                    $('.art_float_tab_view').fadeOut();
+                } else {
+                    $('.art_float_tab_view').fadeIn();
+                    $('.collect_artical').addClass('recommend_fix recommend_fix_top');
+                }
+                cuPosition = scPosition;
+            } else {
+                $('.art_float_tab_view').fadeOut();
+                if ($(window).scrollTop() > (recommendHeight+60)) {
+                    $('.collect_artical').addClass('recommend_fix');
+                } else {
+                    $('.collect_artical').removeClass('recommend_fix recommend_fix_top');
+                }
+            }
+        })
+        $('.flex_btn_m').show();
+    }else{
+        $('.bottom_fix_m').attr('style','padding:0;')
+        $('.buy_btn_m').attr('style','margin:10px 15px;')
+        $('.flex_btn_m').hide();
+        $('.line').hide();
+    }
+    if($('.more_link') && $('.chat_bg') && $('.chat_bg').text().length<50){
+        $('.more_link').hide();
+    }
+    //初始
+    if (!articleTxt || articleTxt.length == 0 || articleTxt == null || articleTxt == '') {
+        $('#art_tab_1,#art_float_tab_1').hide();
+        memoir.show();
+        $('#art_tab_2,#art_float_tab_2').addClass('chat_art_tab_select');
+        memoirM.show();
+        $('.tamb_1').hide();
+        $('.tamb_2').removeClass('topic_art_m_box');
+        $('#topic_art_m_tab_2').addClass('topic_art_m_tab_select');
+    }
+    if (!memoirTxt || memoirTxt.length == 0 || memoirTxt == null || memoirTxt == '') {
+        $('#art_tab_2,#art_float_tab_2').hide();
+        $('.tamb_2').hide();
+        $('.tamb_1').removeClass('topic_art_m_box');
+        $('.chat_art #art_tab_1').css('border', 'none');
+    }
+    //标签切换
+    $('#art_tab_1,#art_float_tab_1').click(function () {
+        $('#art_tab_1,#art_float_tab_1').addClass('chat_art_tab_select');
+        $('#art_tab_2,#art_float_tab_2').removeClass();
+        article.show();
+        memoir.hide();
+        $(window).scrollTop(0);
+    })
+    $('#art_tab_2,#art_float_tab_2').click(function () {
+        $('#art_tab_2,#art_float_tab_2').addClass('chat_art_tab_select');
+        $('#art_tab_1,#art_float_tab_1').removeClass();
+        article.hide();
+        memoir.show();
+        $(window).scrollTop(0);
+    })
+    $('#topic_art_m_tab_1').click(function () {
+        $(this).addClass('chat_art_tab_select');
+        $('#topic_art_m_tab_2').removeClass();
+        articleM.show();
+        memoirM.hide();
+    })
+    $('#topic_art_m_tab_2').click(function () {
+        $(this).addClass('chat_art_tab_select');
+        $('#topic_art_m_tab_1').removeClass();
+        articleM.hide();
+        memoirM.show();
+    })
+    // 分享
+    $('#wx_icon').click(function (param) {
+        $('.wb_view').fadeOut(300);
+        $('.wx_view').fadeIn(300).css('display', '-webkit-flex');
+    })
+    $('.wx_share_close').click(function (param) {
+        $('.wx_view').fadeOut(300);
+    })
+    // 分享二维码
+    var shareUrl = window.location.href;
+    $('#wx_share_code').qrcode({
+        render:'canvas',
+        text:shareUrl,
+        width:100,
+        height:100
+    })
+    var ShareTip = function () {}
+    //分享到新浪微博
+    ShareTip.prototype.sharetosina = function (title, url) {
+        var sharesinastring = 'http://v.t.sina.com.cn/share/share.php?title=' + title + '&url=' + url + '&content=utf-8&sourceUrl=' + url;
+        window.open(sharesinastring, 'newwindow', 'height=400,width=400,top=100,left=100');
+    }
+    $('#wb_icon').on('click', function () {
+        var shareUrl = window.location.href;
+        var share1 = new ShareTip();
+        share1.sharetosina(title, shareUrl);
+    })
+    //移动端查看全部作者信息
+    $('.more_link').click(function(){
+        $('.art_user_desc_2').css('height','auto');
+        $(this).hide();
+    })
+})
+//标签获取
+function tagsGet() {
+    request('/activities/recommendTags', true, 'GET', {}, function (data) {
+        let htmlStr = ``;
+        for (let i = 0; i < data.value.length&&i<24; i++) {
+            htmlStr += `<span class="tag_item animated flipInX" data-tid="${data.value[i].id}" data-tname="${data.value[i].tagName}" data-track-click='{"mod":"popu_667","con":",https://gitchat.csdn.net/serieses/recommend,-"}' data-track-view='{"mod":"popu_667","con":",https://gitchat.csdn.net/serieses/recommend,-"}'>${data.value[i].tagName}</span>`;
+        }
+        $('.tag_table .tag_row').html(htmlStr);
+        eachTag();
+    });
+}
+//当url有tagkey关键字时给标签添加选中
+function eachTag() {
+    let serUrl = window.location.href;
+    let keyIndex = serUrl.indexOf('=');
+    let key = serUrl.substr(keyIndex + 1);
+    $('.tag_row .tag_item').each(function () {
+        if ($(this).text() == key) {
+            tagName = $(this).data('tname');
+            tagid = $(this).data('tid');
+            $(this).addClass('tag_choose');
+        }
+    })
+}
+//当url有tagkey关键字搜索
+function searchTagRequest() {
+    let serUrl = window.location.href;
+    let keyIndex = serUrl.indexOf('=');
+    tagRequest(serUrl.substr(keyIndex + 1));
+}
+//通过标签搜索
+function tagRequest(keyword) {
+    if (utmSourceUrl && utmSourceUrl != '') {
+        window.location.href = '/activities?tagKey=' + keyword+'&utm_source='+utmSourceUrl;
+    }else{
+        window.location.href = '/activities?tagKey=' + keyword;
+    }
+}
+// 会员
+$('#vip_btn').click(function(){
+    if (utmSourceUrl && utmSourceUrl != '') {
+        window.location.href = 'https://mall.csdn.net/coin/lists?cate=GitChat&utm_source='+utmSourceUrl;
+    }else {
+        window.location.href = 'https://mall.csdn.net/coin/lists?cate=GitChat';
+    }
+})
+// 购买
+$('#buy_btn,#buy_btn_m').click(function () {
+    if (user) {
+        payfor(3, id, chatPrice);
+    } else {
+        window.location.href = 'https://passport.csdn.net/account/login?from=' + window.location.href;
+    }
+})
+//收藏
+$('#art_share_collect').click(function () {
+    if(user){
+        if ($('#art_share_collect span').text() == '收藏') {
+            request(`/activity/mark/${activityId}`, true, 'GET', {}, function (data) {
+                if(data.code == 200){
+                    $('#art_share_collect').removeClass('art_share_no_collect').addClass('art_share_collect');
+                    $('#art_share_collect img').attr('src', 'https://images.gitbook.cn/FtvbWUnZcOu_muNrEebX_K0tOXit');
+                    $('#art_share_collect span').text('已收藏');
+                    $('#wb_icon').attr('src', 'https://images.gitbook.cn/Fkk8lh8b1QZKcSgszXheA6noBK42');
+                    $('#wx_icon').attr('src', 'https://images.gitbook.cn/FiDaV18ARqvcBSI9jJsvZSUiw-Ap');
+                } else if(data.code==400){
+                    window.location.href = 'https://passport.csdn.net/account/login?from=' + window.location.href;
+                } else{
+                    layer.msg('网络不太好，请稍后再试');
+                }
+            });
+        }else{
+            request(`/activity/unmark/${activityId}`, true, 'GET', {}, function (data) {
+                if (data.code == 200) {
+                    $('#art_share_collect').removeClass('art_share_collect').addClass('art_share_no_collect');
+                    $('#art_share_collect img').attr('src', 'https://images.gitbook.cn/FgA0_D39KNDAaCQpBCLlYwXbNUVz');
+                    $('#art_share_collect span').text('收藏');
+                    $('#wb_icon').attr('src', 'https://images.gitbook.cn/FhlikNzfANw5Qu-w_wA01Kv1k7Ow');
+                    $('#wx_icon').attr('src', 'https://images.gitbook.cn/FqYSg3I_9vnaj8WQaSYPAndTGMO_');
+                } else if (data.code == 400) {
+                    window.location.href = 'https://passport.csdn.net/account/login?from=' + window.location.href;
+                } else {
+                    layer.msg('网络不太好，请稍后再试');
+                }
+            });
+        }
+    } else {
+        window.location.href = 'https://passport.csdn.net/account/login?from=' + window.location.href;
+    }
+})
+//移动端收藏
+$('#art_share_collect_m').click(function () {
+    if (user) {
+        if ($('#art_share_collect_m span').text() == '收藏') {
+            request(`/activity/mark/${activityId}`, true, 'GET', {}, function (data) {
+                if (data.code == 200) {
+                    $('#art_share_collect_m').removeClass('no_collect_m').addClass('collected_m');
+                    $('#art_share_collect_m img').attr('src', 'https://images.gitbook.cn/FnyoFEB_hdm-guUQDE3kjKaRm4S7');
+                    $('#art_share_collect_m span').text('已收藏');
+                } else if (data.code == 400) {
+                    window.location.href = 'https://passport.csdn.net/account/login?from=' + window.location.href;
+                } else {
+                    layer.msg('网络不太好，请稍后再试');
+                }
+            });
+        } else {
+            request(`/activity/unmark/${activityId}`, true, 'GET', {}, function (data) {
+                if (data.code == 200) {
+                    $('#art_share_collect_m').removeClass('collected_m').addClass('no_collect_m');
+                    $('#art_share_collect_m img').attr('src', 'https://images.gitbook.cn/FicqbEvwkUWUMhDiZnMra8TK1za_');
+                    $('#art_share_collect_m span').text('收藏');
+                } else if (data.code == 400) {
+                    window.location.href = 'https://passport.csdn.net/account/login?from=' + window.location.href;
+                } else {
+                    layer.msg('网络不太好，请稍后再试');
+                }
+            });
+        }
+    } else {
+        window.location.href = 'https://passport.csdn.net/account/login?from=' + window.location.href;
+    }
+})

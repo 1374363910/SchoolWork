@@ -1,0 +1,36 @@
+(function(config) {
+    window.AnalysysAgent = window.AnalysysAgent || []
+    window.AnalysysAgent.methods = 'identify alias reset track profileSet profileSetOnce profileIncrement profileAppend profileUnset profileDelete registerSuperProperty registerSuperProperties unRegisterSuperProperty clearSuperProperties getSuperProperty getSuperProperties pageView debugMode auto appkey name uploadURL hash visitorConfigURL autoProfile autoWebstay encryptType pageProperty autoHeatmap freeApi'.split(' ');
+
+    function factory(b) {
+        return function() {
+            var a = Array.prototype.slice.call(arguments);
+            a.unshift(b);
+            window.AnalysysAgent.push(a);
+            return window.AnalysysAgent;
+        }
+    };
+    for (var i = 0; i < AnalysysAgent.methods.length; i++) {
+        var key = window.AnalysysAgent.methods[i];
+        AnalysysAgent[key] = factory(key);
+    }
+    for (var key in config) {
+        AnalysysAgent[key](config[key])
+    }
+    var date = new Date();
+    var time = new String(date.getFullYear()) + new String(date.getMonth() + 1) + new String(date.getDate());
+
+    var d = document,
+        c = d.createElement('script'),
+        n = d.getElementsByTagName('script')[0];
+    c.type = 'text/javascript';
+    c.async = true;
+    c.id = 'ARK_SDK';
+    c.src = '/analysysAgent/AnalysysAgent_JS_SDK.min.js' +'?v=' +time; //JS SDK存放地址
+    n.parentNode.insertBefore(c, n);
+})({
+    //开始配置SDK相关参数
+    appkey: '47a425d3bc2dbd4a', //配置APPKEY参数
+    uploadURL: 'https://ark-customer.analysys.cn:4089',//配置上传数据的地址
+    debugMode :0
+})

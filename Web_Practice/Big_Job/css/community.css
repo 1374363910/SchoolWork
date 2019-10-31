@@ -1,0 +1,377 @@
+/* 全局样式 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:white;
+}
+
+body,ul,li,p{
+    margin: 0;
+    padding: 0;
+}
+
+
+ul{
+    list-style-type: none;
+}
+
+/* 导航栏样式 */
+.navbar-brand{
+    font-family: cursive;
+}
+
+
+/* 内容部分样式 */
+.article{
+    margin-top: 50px;
+    background-color: white;
+}
+
+.test{
+    height: 50px;
+}
+
+
+.main{
+    width: 1080px;
+    margin: 80px auto;
+    padding: 10px;
+}
+.header{
+    width: 1060px;
+    height: 160px;
+    position: relative;
+
+}
+.logo{
+    float: left;
+    height: 160px;
+    width: 120px;
+    /* background-color: aquamarine; */
+}
+
+#font_community{
+    height: 40px;
+    width: 90px;
+    font-size: 25px;
+    /* background-color: #FF838B; */
+    background-color:#ed4040;
+    color: white;
+    border-radius: 8px;
+    margin: 0px 15px 4px;
+    text-align: center;
+    padding-top: 3px;
+}
+
+.publish{
+    float: left;
+    width: 940px;
+    height: 160px;
+    /* background-color: #FF838B; */
+    padding: 0px 0px 0px 50px;
+}
+
+.publish_choose{
+    width: 890px;
+    height: 35px;
+}
+
+.ul_public{
+    width: 890px;
+    height: 35px;
+    font-size: 16px;
+    padding-top: 6px;
+    padding-left: 20px;
+    border: 1px solid rgb(200, 200, 200);
+}
+.ul_public li{
+    height: 29px;
+    display:inline-block; 
+    margin-right: 20px;
+}
+.li_public_item_current{
+    border-bottom: 2px solid #ed4040;
+}
+
+.publish_content{
+    width: 890px;
+    height: 125px;
+    /* padding: 10px 20px 10px 20px; */
+    border: 1px solid rgb(200, 200, 200);
+    border-top:hidden ;
+    background-color: rgb(245, 245, 245);
+}
+
+#publish_textarea{
+    margin:10px 20px 0px 20px;
+    width: 850px;
+    height: 70px;
+    border: none;
+    outline: none;
+    background-color: rgb(245, 245, 245);
+}
+
+.publish_footer{
+    width: 100%;
+    height: 40px;
+    /* background-color: aqua; */
+    border-top: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(200, 200, 200);
+    background-color: white;
+}
+.publish_footer_pic{
+    float: left;
+    width: 90px;
+    height: 40px;
+    /* background-color: #40ed40; */
+    text-align: center;
+    line-height: 40px;
+}
+.span_icon{
+    padding: 12px;
+    /* background-color: bisque; */
+}
+
+.publish_tips_upload{
+    float: right;
+    width: 150px;
+    height: 40px;
+    /* background-color: #ed4040;
+    text-align: center;
+    line-height: 45px; */
+}
+#btn_upload{
+    width: 151px;
+    height: 39px;
+    background-color: #e06767;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    outline:none;
+    border-style: hidden;
+
+}
+.publish_tips_upload a{
+    color: white;
+    font-size: 16px;
+}
+.publish_tips_upload a:hover{
+    color: white;
+    font-size: 16px;
+}
+
+
+.ad1{
+    width: 1060px;
+}
+
+
+.left{
+    margin: 15px 20px 20px 0px;
+    width: 670px;
+    float: left;
+}
+
+.left_title{
+    height: 35px;
+    border-bottom: 1px solid #eeeeee;
+    position: relative;
+}
+.left_title_content{
+    line-height: 30px;
+    font-size: 20px;
+}
+.left_title_content h{
+    padding-bottom: 5px;
+}
+
+.left_title_content .topic_right {
+    float: right;
+    margin: 0 0 0 20px;
+    font-size: 16px;
+}
+.left_title_content a{
+    text-decoration: none;
+    color:#333;
+}
+.left_title_content a:hover{
+    /* color:#ff6767; */
+    color:red;
+}
+#hot_topic{
+    /* color: #ff6767; */
+    color: red;
+    border-bottom: 3px solid red;
+}
+
+.all_list{
+    width: 670px;
+    margin-top: 10px;
+}
+
+.all_list li{
+    float: left;
+    padding: 10px 0px;
+    width: 670px;
+}
+
+.user_person{
+    float: left;
+    width: 670px;
+    height: 50px;
+}
+.user_person_photo img{
+    float: left;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user_person_photo{
+    float: left;
+    width: 55px;
+    height: 50px;
+}
+.user_person_infor{
+    float: left;
+    margin: 3px 0px;
+    width: 615px;
+    height: 40px;
+}
+.user_person_infor a{
+    width: 100%;
+    float: left;
+    color:#333;
+    font-size:16px;
+}
+.user_person_infor a:hover{
+    color:#333;
+}
+
+.user_content{
+    float: left;
+    width: 100%;
+    padding:5px 0px 5px 50px ;
+}
+
+.user_content_passage{
+    float: left;
+    width: 100%;
+    padding: 5px;
+    word-wrap:break-word; 
+    font-size: 16px;
+    color: #333;
+}
+.user_content_pic_list{
+    float: left;
+    width: 100%;
+    padding: 5px;
+}
+.user_content_pic{
+    float: left;
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.user_content_like{
+    float: left;
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+.right{
+    margin: 15px 0px 0px 20px;
+    width: 350px;
+    padding: 0px;
+    float: left;
+}
+
+#logon{
+    width: 350px;
+}
+
+.search{
+    margin: 10px 0px  20px;
+    width: 350px;
+}
+
+#button_search{
+    background-color:  #1797ff;
+    color: white;
+    height: 40px;
+    width: 80px;
+    float: right;
+    outline:none;
+    border-style: hidden;
+}
+#input_search{
+    background-color: rgb(245, 245, 245);
+    height: 40px;
+    width:270px; 
+    margin: 0px;
+    border: 1px solid rgb(200, 200, 200);
+    border-right: hidden;
+
+}
+.right_ad_all_list{
+    width: 350px;
+    height: auto;
+    margin-top: 20px;
+}
+.right_ad_list{
+    float: left;
+    width: 350px;
+    height: auto;
+    margin-bottom: 10px;
+}
+.right_ad_list_pic{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-right: 7px;
+    background-color: rgb(245, 245, 245);
+}
+.right_ad_list_name{
+    width: 100%;
+    font-size: 14px;
+}
+.right_ad_list_time{
+    width: 100%;
+    font-size: 12px;
+    margin-top: 3px;
+    color: rgb(120, 120, 120);
+}
+.right_ad_list_price{
+    width: 100%;
+    font-size: 14px;
+    margin-top: 3px;
+    color: #ed4040;
+}
+.right_ad_list_price a{
+    height: 22px;
+    line-height: 20px;
+    border: 1px solid #ed4040;
+    border-radius: 10px;
+    display: block;
+    float: right;
+    margin-right:20px ;
+    font-size: 12px;
+    padding: 0px 10px;
+    color: #ed4040;
+    background-color: white;
+}
+.right_ad_list_price a:hover{
+    color: white;
+    background-color: #ed4040;
+}
