@@ -1,0 +1,72 @@
+html {
+    background-color: whitesmoke;
+    text-align: center;
+    font: 1em sans-serif;
+}
+
+body {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: #EDEEF0;
+}
+#head{
+    width: 960px;
+    height: 320px;
+    background-image: url(img/hdu.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1 {
+    padding-top: 5%;
+    text-align: center;
+}
+.important{
+    padding: 0px 20px 20px 50px;
+    margin: 20px;
+    background-color: #F6F7F7;
+    box-shadow: 2px 2px 5px rgb(221, 222, 224);
+    background-image: url(img/logo.png);
+    background-repeat: no-repeat;
+}
+.normal{
+    margin: 20px 10px 10px 10px;
+    border: 2px solid white;
+    padding: 0px 20px 20px 20px;
+}
+h2 {
+    
+    color: #6DA1D0;
+    border-bottom: 2px solid #6DA1D0;
+    line-height: 1.9em;
+}
+
+.important p {
+    line-height: 1.9em;
+}
+
+.normal p {
+    line-height: 1.5em;
+}
+#tail{
+    padding: 10px;
+    background-color: rgb(153, 153, 153);
+}
+#tail p{
+    color: #fff;
+}
+a {
+    font-weight: bold;
+    color: rgb(68, 187, 241);
+}
+a:link {
+    text-decoration: none;
+
+}
+a:visited {
+    color: rgb(14, 122, 172);
+}
+a:hover, a:active {
+    color: rgb(39, 173, 235);
+    text-decoration: underline;
+}

@@ -1,0 +1,29 @@
+#output{
+    width: 400px;
+    height: 90px;
+    border: 2px solid rgb(201, 201, 201);
+    border-radius: 5px;
+    text-align: right;
+}
+label{
+    height: 100%;
+    width: 100%;
+}
+div{
+    height: 120px;
+    width: 95px;   
+}
+#zero{
+    width: 197px;
+}
+
+input{
+    height: 97%;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #808080;
+}
+.Biz input{
+    background-color: #fda428;
+}

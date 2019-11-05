@@ -1,0 +1,376 @@
+<html>
+
+<head>
+  <title></title>
+  <link rel="stylesheet" href="css/bulma.min.css">
+
+
+</head>
+<script>
+  var counts = ["image/2.jpg", "image/6.jpg", "image/3.jpg", "image/1.jpg", "image/5.jpg"];
+  var i = 0;
+  var count = ["image/1.jpg", "image/2.jpg", "image/3.jpg", "image2.jpg"];
+  var nowimage = 1
+  var nowimage_back = 1;
+  const text = ["午后", "刺身",
+    "甜品", "形状"
+  ]
+
+  function run() {
+    setInterval(cycle, 2000);
+  }
+
+  function cycle() {
+    i++;
+    if (i == counts.length) i = 0;
+    document.getElementById('div11').src = counts[i];
+
+  }
+
+  function Next() {
+    nowimage += 1;
+    if (nowimage <= 10) {
+      document.getElementById('div12').src = "image/" + nowimage + ".jpg";
+    }
+    console.log(nowimage)
+  }
+
+  function Next1() {
+
+    nowimage_back += 1;
+    if (nowimage_back <= 10) {
+      if (nowimage_back >= 5) nowimage_back = 1
+      document.getElementById('back').src = "image/" + nowimage_back + ".jpg";
+      document.getElementById("span_sen").innerText = text[nowimage_back - 1]
+    }
+  }
+
+  function Pre() {
+    nowimage_back -= 1;
+    if (nowimage_back <= 10) {
+      if (nowimage_back <= 0) nowimage_back = 3
+      document.getElementById('back').src = "image/" + nowimage_back + ".jpg";
+      document.getElementById("span_sen").innerText = text[nowimage_back - 1]
+    }
+  }
+</script>
+
+</head>
+
+<body onload="run()">
+  <!-- <button onclick="Next1()">下一个</button> -->
+  <div class="divTop" id="divTop">
+    <nav class="navbar " role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+      
+        <div class="navbar-end">
+          <a class="navbar-item" href="index.html">
+            主页
+          </a>
+
+          <a class="navbar-item" href="menu.html">
+            菜谱介绍
+          </a>
+          <a class="navbar-item" href="restaurant.html">
+              吃货
+            </a>
+            <a class="navbar-item" href="community.html">
+               社区
+              </a>
+        </div>
+      </div>
+
+
+  </div>
+  </nav>
+  </div>
+
+  <!-- <div class="container is-fluid" style="padding-top: 70px;">
+    <div class="notification" style="text-align: center">
+      今天<strong>吃饭</strong>
+
+      <p class="is-large">Do not speak ill of others in their absence.</p>
+    </div>
+  </div> -->
+
+  <div class="columns" style="margin-left: 4%; margin-top:2%">
+    <div class="column is-three-quarters" style="background-color: #FAFAFA">
+
+      <div class="content  back ">
+        <div class="divcss5" id="divcss5">
+          <img src="image/1.jpg" id="back" style="height: 100%;width: 90%">
+          <span id="span_sen"> 午后</span>
+
+
+
+        </div>
+
+
+        <div class="backimage-right">
+          <img src="image/right.png" onclick="Next1()">
+        </div>
+        <div class="backimage-left">
+          <img src="image/left.png" onclick="Pre()">
+        </div>
+      </div>
+      <div class="columns is-mobile">
+        <div class="column">
+          <article class="message">
+            <div class="message-header">
+              <p>小介绍</p>
+
+            </div>
+            <div class="message-body">
+              浙江菜简称浙菜，是浙江地方风味菜系。
+              浙江是江南的鱼米之乡。浙菜有如下几大特征：一是用料广博，配伍严谨。主料注重时令和品种，配料、调料；二是刀工精细；三是火候调味，最重适度；四是清鲜嫩爽，滋、味兼得；五是浙菜四支，风韵各具。
+            </div>
+          </article>
+        </div>
+
+        <div class="column " id="img1">
+          <figure class="image is-4by2">
+            <img src="image/1.jpg" alt="pic" id="div11">
+
+          </figure>
+        </div>
+        <!-- <div class="column">
+          <figure class="image is-2by1">
+            <img src="image/1.jpg" alt="pic" id="div12">
+          </figure>
+        </div> -->
+      </div>
+
+      <div class="tile is-ancestor" style="background-color: #ffffff;box-shadow:3px 5px 20px #cccccc;margin-top:30px;">
+        <div class="message-header">
+          <p>小食光</p>
+
+        </div>
+        <div class="tile is-4 is-vertical is-parent">
+          <div class="tile is-child box ">
+            <p class="title ">火锅</p>
+            <p>我们追寻脚步，我们口口相传，我们任时光老去，我们生于此地，我们吃在此地。火锅餐饮方便快捷的大众化特色被消费者接受和喜爱，尤其北方地区寒冷干燥的天气让火锅市场潜力很大，而且火锅种类的经营方式也不断创新，有以“麻、辣、烫”著称的重庆火锅是南派火锅，以涮羊肉为主要代表的北派火锅和新派火锅。
+            </p>
+          </div>
+          <div class="tile is-child box">
+            <p class="title">食客</p>
+            <p>啃羊蹄儿的时候，你最好放弃矜持变成一个被饥饿冲昏头脑的纯粹的人。皮的滋味
+              筋的弹性，烤的焦香，卤的回甜，会让你忘记整个世界，眼里只有一条连骨的大筋在嘴里旋转、跳跃逼着你一口撕扯下来，狠狠咀嚼，再灌下整杯冰啤
+              <strong>“嗝～舒服”</strong></p>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <div class="tile is-child box">
+            <p class="title"><strong>没了烟火气人生就是一段孤独的旅程————烧烤摊</strong></p>
+            <p><strong>烧烤</strong>重口味能吃到一起的都是难得的缘分 敢一起尝试的都是过命的交情同样的地方和同样的人，吃东西才最有意思。兜兜转转许多年，
+              板筋还在，牙口尚好。这是最长情的告白，也是最脱俗的情调。几串烤肉、一杯美酒这就是深夜路边的那份得意 这就是平凡热辣的市井人生也许你记不得曾经吃过的烧烤摊儿
+              也许你所在的城市也在发生巨变但多年以后你仍记得还是那份熟悉的味道
+              和陪你吃烧烤的那个人。<strong>许多年后回到熟悉的老地方，还是会说一句，谢谢款待</strong></p>
+            <p>大块的瘦肉很有嚼劲，牛肉与辣椒是天生绝配，昭通小曲儿是烧烤的艺术多亏了超薄干豆腐，铁合金的米其林三星大厨，才敢往里填四种材料而不怕烤不熟。
+              ,肉、肉、还是肉如果烧烤的世界里只有肉,舌头也会审美疲劳。在饱含水分的韭菜上
+              撒上自家调制的辣椒粉到了这时火候又是一道决定口感的门槛，
+              需要用趁手的蒲扇，个性化把握
+              通过翻折，感受韭菜的软硬
+              判断火候是否到位。<strong>在火上切十字刀花，一把辣椒一把盐</strong>甭管天南海北重口味是宵夜的统一气质
+
+
+
+            </p>
+         
+          </div>
+        </div>
+      </div>
+      <!-- <article class="media" style="margin-top: 120px;">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="https://bulma.io/images/placeholders/128x128.png">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="field">
+            <p class="control">
+              <textarea class="textarea" placeholder="Add a comment..."></textarea>
+            </p>
+          </div>
+          <nav class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <a class="button is-info is-loading">
+                  Button
+                </a>
+              </div>
+            </div>
+            <div class="level-right">
+              <div class="level-item">
+                <label class="checkbox">
+                  <input type="checkbox"> Press enter to submit
+                </label>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </article> -->
+    </div>
+
+    <div class="column is-gapless divMsgInfo">
+
+      <div class="container is-widescreen">
+        <div class="notification">
+          <a href="work.html" style=" text-decoration:none;"><span class="tag">
+              高血压
+            </span></a>
+          <a href="work.html" style=" text-decoration:none;"> <span class="tag is-danger">烘培</span> </a>
+          <a href="" style=" text-decoration:none;"><span class="tag is-primary is-medium">甜点</span></a>
+          <a href="" style=" text-decoration:none;"><span class="tag is-warning ">粤菜</span></a>
+          <div style="padding-top:20px"> <a href="" style=" text-decoration:none;"><span
+                class="tag is-danger ">韩国料理</span></a>
+            <a href="" style=" text-decoration:none;"><span class="tag is-black is-large">家常菜</span></a>
+            <a href="" style=" text-decoration:none;"><span class="tag is-success is-medium">川菜</span></a>
+          </div>
+          <div style="padding-top:20px"> <a href="" style=" text-decoration:none;"><span
+                class="tag is-warning is-large">浙菜</span></a>
+            <span class="tag is-info is-large">凉菜</span>
+            <span class="tag is-info is-medium">素食</span></div>
+
+        </div>
+      </div>
+      <div class="backTop">
+        <a href="#divTop" style=" text-decoration:none;"><img src="image/Top.png"
+            style="width: 20px;height: 20px">Top</a>
+
+      </div>
+    </div>
+
+
+  </div>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>食物</strong> by <a>Garcher</a>美食小文章
+        
+      </p>
+    </div>
+  </footer>
+
+</body>
+
+<style>
+  body {
+
+    background-color: rgba(233, 240, 240)
+  }
+
+  /* css实现鼠标出现 */
+  img {
+    border: 0
+  }
+
+  /* css 注释说明：设置图片边框为0 */
+  .divcss5 {
+    position: relative;
+
+  }
+
+  .divcss5 a,
+  .divcss5 span {
+    text-align: center;
+    display: none;
+    text-decoration: none
+  }
+
+  .divcss5:hover {
+    cursor: pointer
+  }
+
+  .divcss5:hover a.now {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    left: 0;
+    display: block;
+  }
+
+  .divcss5:hover span {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #FFF;
+    width: 89%;
+    z-index: 10;
+    height: 50px;
+    line-height: 100%;
+    background: #EEEEEE;
+    filter: alpha(opacity=60);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+    color: #000;
+  }
+
+  .space {
+
+    margin: 0px auto;
+  }
+
+  .large {
+    width: 400px;
+    margin: 0 auto;
+
+
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .back {
+    width: 1110px;
+    height: 450px;
+    position: relative;
+  }
+
+  .backimage-right {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 90%;
+    top: 80%;
+
+    opacity: 0.6;
+  }
+
+  .backimage-left {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 90%;
+    top: 20%;
+
+    opacity: 0.6;
+  }
+
+  .divMsgInfo {
+    position: fixed;
+    right: 0;
+    top: 310;
+    width: 250px;
+  }
+
+  .divTop {
+    width: 100%;
+
+  }
+
+  .backTop {
+    position: fixed;
+    right: 0;
+    top: 95%;
+  }
+</style>
+
+</html>

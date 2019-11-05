@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="css/community.css" />
+  <link rel="stylesheet" href="css/bootstrap_com.css" />
+  <script type="text/javascript" src="js/community.js">
+  </script>
+
+  <title>中华美食--社区</title>
+</head>
+
+<body onload="onload_show_ad()">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#target-menu">
+          <span class="sr-only">切换导航</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">中华美食</a>
+      </div>
+      <div class="collapse navbar-collapse" id="target-menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="menu.html">菜谱</a></li>
+          <li><a href="restaurant.html">吃货</a></li>
+          <li class="active"><a href="community.html">社区</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="main">
+
+    <div class="header">
+
+      <div class="logo">
+        <img src="images/community/logo.png" alt="logo" style="width: 100px; margin:0px 0px 16px 10px;">
+        <div id='font_community'>社区</div>
+      </div>
+
+      <div class="publish">
+        <div class="publish_choose">
+          <ul class="ul_public">
+            <li id="li_one" class="li_public_item_current" onclick="liOnclick(this)">发图文</li>
+            <li id="li_two" class="li_public_item" onclick="liOnclick(this)">发文章</li>
+            <li id="li_three" class="li_public_item" onclick="liOnclick(this)">发视频</li>
+            <li id="li_four" class="li_public_item" onclick="liOnclick(this)">提问题</li>
+          </ul>
+        </div>
+
+        <div class="publish_content">
+          <textarea id="publish_textarea" placeholder="有什么新鲜事想和大家分享"></textarea>
+          
+          <div class="publish_footer">
+              <div class="publish_footer_pic">
+                <span class="span_icon">
+                  <img src="images/community/image-icon.png" alt="" style="width: 20px;">
+                  <span>图片</span>
+                </span>
+              </div>
+              <div class="publish_footer_pic">
+                  <span class="span_icon">
+                    <img src="images/community/emoji-icon.png" alt="" style="width: 20px;">
+                    <span>表情</span>
+                  </span>
+                </div>
+              <div class="publish_tips_upload">
+                <button id="btn_upload" onclick="btnUploadOnclick()" disabled="disabled">登陆后发布</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <hr style="background-color:#ed4040;height:1px;border:none">
+
+    <div class="ad1">
+      <img id="ad" src="images/community/ad1.jpg" style="width: 1060px;" onclick="show_ad()">
+    </div>
+
+    <div class="left">
+        <div class="left_title">
+          <div class="left_title_content">
+            <h id="hot_topic">热门话题</h>
+           
+            <a class="topic_right" style="text-decoration:none;">谈天说地</a>
+            <a class="topic_right" style="text-decoration:none;">分类专区</a>
+            <a class="topic_right" style="text-decoration:none;">最新发布</a>
+            <a class="topic_right" style="text-decoration:none;">随机推荐</a>
+
+          </div>
+        </div>
+
+
+        <div class="all_list">
+          <ul>
+            <li>
+              <div class="user_person">
+                <div class="user_person_photo">
+                  <a>
+                    <img src="images/community/u1.jpg" alt="用户" style="width: 45px; height: 45px; display:block">
+                  </a>
+                </div>
+                <div class="user_person_infor">
+                  <a style="text-decoration: none;">唐僧洗头爱飘柔</a>
+                  <span style="font-size: 12px;">3分钟前</span>
+                </div>
+              </div>
+              <div class="user_content">
+                <div class="user_content_passage">#晚餐# 大闸蟹，杏鲍菇，番茄蛋汤，炒笋尖</div>
+                <div class="user_content_pic_list">
+                  <img class="user_content_pic" src="images/community/u1_pic1.jpg">
+                  <img class="user_content_pic" src="images/community/u1_pic2.jpg">
+                  <img class="user_content_pic" src="images/community/u1_pic3.jpg">
+                  <img class="user_content_pic" src="images/community/u1_pic4.jpg">
+                  <img class="user_content_pic" src="images/community/u1_pic5.jpg">
+                </div>
+                <div class="user_content_like"><span>3个喜欢，12条评论</span></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="user_person">
+                <div class="user_person_photo">
+                  <a>
+                    <img src="images/community/u2.jpg" alt="用户" style="width: 45px; height: 45px; display:block">
+                  </a>
+                </div>
+                <div class="user_person_infor">
+                  <a style="text-decoration: none;">农夫三拳</a>
+                  <span style="font-size: 12px;">52分钟前</span>
+                </div>
+              </div>
+              <div class="user_content">
+                <div class="user_content_passage">餐后水果，酸甜可口</div>
+                <div class="user_content_pic_list">
+                  <img class="user_content_pic" src="images/community/u2_pic1.jpg">
+                  <img class="user_content_pic" src="images/community/u2_pic2.jpg">
+                  <img class="user_content_pic" src="images/community/u2_pic3.jpg">
+                  <img class="user_content_pic" src="images/community/u2_pic4.jpg">
+                </div>
+                <div class="user_content_like"><span>5个喜欢，7条评论</span></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="user_person">
+                <div class="user_person_photo">
+                  <a>
+                    <img src="images/community/u3.jpg" alt="用户" style="width: 45px; height: 45px; display:block">
+                  </a>
+                </div>
+                <div class="user_person_infor">
+                  <a style="text-decoration: none;">米拉Miira</a>
+                  <span style="font-size: 12px;">1小时7分钟前</span>
+                </div>
+              </div>
+              <div class="user_content">
+                <div class="user_content_passage">感冒的日子不好受，今儿鼻涕直流，喷嚏打不停，要吃点好的补补</div>
+                <div class="user_content_pic_list">
+                  <img class="user_content_pic" src="images/community/u3_pic1.jpg">
+                  <img class="user_content_pic" src="images/community/u3_pic2.jpg">
+                  <img class="user_content_pic" src="images/community/u3_pic3.jpg">
+                  <img class="user_content_pic" src="images/community/u3_pic4.jpg">
+                  <img class="user_content_pic" src="images/community/u3_pic5.jpg">
+                </div>
+                <div class="user_content_like"><span>16个喜欢，9条评论</span></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="user_person">
+                <div class="user_person_photo">
+                  <a>
+                    <img src="images/community/u4.jpg" alt="用户" style="width: 45px; height: 45px; display:block">
+                  </a>
+                </div>
+                <div class="user_person_infor">
+                  <a style="text-decoration: none;">匿名</a>
+                  <span style="font-size: 12px;">1小时19分钟前</span>
+                </div>
+              </div>
+              <div class="user_content">
+                <div class="user_content_passage">自己动手，丰衣足食</div>
+                <div class="user_content_pic_list">
+                  <img class="user_content_pic" src="images/community/u4_pic1.jpg">
+                  <img class="user_content_pic" src="images/community/u4_pic2.jpg">
+                </div>
+                <div class="user_content_like"><span>3个喜欢，0条评论</span></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="user_person">
+                <div class="user_person_photo">
+                  <a>
+                    <img src="images/community/u5.jpg" alt="用户" style="width: 45px; height: 45px; display:block">
+                  </a>
+                </div>
+                <div class="user_person_infor">
+                  <a style="text-decoration: none;">追梦——ZbDu</a>
+                  <span style="font-size: 12px;">1小时42分钟前</span>
+                </div>
+              </div>
+              <div class="user_content">
+                <div class="user_content_passage">紫米玉米烧卖 <br> #秋季养生# 紫米：补气养血，暖脾胃，促消化，秋日养生必备款！</div>
+                <div class="user_content_pic_list">
+                  <img class="user_content_pic" src="images/community/u5_pic1.jpg">
+                  <img class="user_content_pic" src="images/community/u5_pic2.jpg">
+                  <img class="user_content_pic" src="images/community/u5_pic3.jpg">
+                  <img class="user_content_pic" src="images/community/u5_pic4.jpg">
+                </div>
+                <div class="user_content_like"><span>4个喜欢，7条评论</span></div>
+              </div>
+            </li>
+
+
+
+            <li>
+              <div class="user_person">
+                <div class="user_person_photo">
+                  <a>
+                    <img src="images/community/u6.jpg" alt="用户" style="width: 45px; height: 45px; display:block">
+                  </a>
+                </div>
+                <div class="user_person_infor">
+                  <a style="text-decoration: none;">小燕子_0313</a>
+                  <span style="font-size: 12px;">2小时前</span>
+                </div>
+              </div>
+              <div class="user_content">
+                <div class="user_content_passage">#聚餐# 油焖虾、酸萝卜炒肉、凉拌干豆腐丝、牛肉炖土豆、炒花生米</div>
+                <div class="user_content_pic_list">
+                  <img class="user_content_pic" src="images/community/u6_pic1.jpg">
+                  <img class="user_content_pic" src="images/community/u6_pic2.jpg">
+                  <img class="user_content_pic" src="images/community/u6_pic3.jpg">
+                  <img class="user_content_pic" src="images/community/u6_pic4.jpg">
+                  <img class="user_content_pic" src="images/community/u6_pic5.jpg">
+                </div>
+                <div class="user_content_like"><span>21个喜欢，15条评论</span></div>
+              </div>
+            </li>
+
+
+          </ul>
+        </div>
+    </div>
+  
+    <div class="right">
+      
+      <div class="search">
+          <input type="text" id='input_search'>
+          <button id='button_search'>搜索</button>
+     </div> 
+
+      <div id="logon" style="display: '';">
+          <img src="images/community/logon.png" style="width: 100%;"  usemap="#logonMap">
+          <map name="logonMap"><area onclick="userLogon()" shape="rect" coords="50,90,295,135"></map>
+      </div>
+
+
+      <div class="right_ad_all_list">
+        <ul>
+          <li>
+            <div class="right_ad_list">
+              <div class="right_ad_list_pic">
+                <img src="images/community/right_ad_list_pic1.png" alt="" width="80px" height="80px">
+              </div>
+              <div class="right_ad_list_name">
+                  ACA/北美电器 AHM-P125A手持搅拌器电动打蛋器
+              </div>
+              <div class="right_ad_list_time">
+                  2019年10月28日-11月5日
+              </div>
+              <div class="right_ad_list_price">
+                  ￥69.00
+                  <a class="right_ad_list_a" href="https://item.jd.com/420690.html" target="_Blank" style="text-decoration: none;">立即抢购</a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="right_ad_list">
+              <div class="right_ad_list_pic">
+                <img src="images/community/right_ad_list_pic2.png" alt="" width="80px" height="80px">
+              </div>
+              <div class="right_ad_list_name">
+                  华为 HUAWEI Mate 30 Pro
+              </div>
+              <div class="right_ad_list_time">
+                  2019年10月30日-11月7日
+              </div>
+              <div class="right_ad_list_price">
+                  ￥5799.00
+                  <a class="right_ad_list_a" href="https://item.jd.com/100004788075.html#crumb-wrap" target="_Blank" style="text-decoration: none;">立即抢购</a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="right_ad_list">
+              <div class="right_ad_list_pic">
+                <img src="images/community/right_ad_list_pic3.png" alt="" width="80px" height="80px">
+              </div>
+              <div class="right_ad_list_name">
+                  小熊薄饼机迷你电饼铛
+              </div>
+              <div class="right_ad_list_time">
+                  2019年10月31日-11月5日
+              </div>
+              <div class="right_ad_list_price">
+                  ￥118.00
+                  <a class="right_ad_list_a" href="https://item.jd.com/7081326.html" target="_Blank" style="text-decoration: none;">立即抢购</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  </div>
+
+  <!-- <script src="js/jquery-3.4.1.min.js"></script> -->
+  <!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css.css">
+    <title>YueMa</title>
+</head>
+<body>
+    <h1>约妈网</h1>
+    <h2>个人信息</h2>
+    <hr>
+    <div class="content">
+        <table>
+            <tr>
+            <td>我的性别 </td>
+            <td><input type="radio" name="gender" value="male" checked> 男</td>
+            <td><input type="radio" name="gender" value="female"> 女</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>出生日期</td>
+                <td colspan="2"><input type="text" name="birth"></td>
+            </tr>
+            <tr>
+                <td>居住地址</td>
+                <td><input type="text" name="province" value="浙江省"></td>
+                <td><input type="text" name="city" value="杭州市"></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    婚姻情况
+                </td>
+                <td>
+                    <input type="radio" name="marital" value="unmarried" checked> 未婚
+                </td>
+                <td>
+                    <input type="radio" name="marital" value="divorced"> 离异
+                </td>
+                <td>
+                    <input type="radio" name="marital" value="widowed"> 丧偶
+                </td>
+            </tr>         
+        </table>
+        <table>
+            <tr>
+                <td>
+                    身高
+                </td>
+                <td>
+                    <select name="stature">
+                        <option value="100cm">100cm</option>
+                        <option value="110cm">110cm</option>
+                        <option value="120cm">120cm</option>
+                        <option value="130cm">130cm</option>
+                        <option value="140cm">140cm</option>
+                        <option value="150cm">150cm</option>
+                        <option value="160cm" selected = "selected">160cm</option>
+                        <option value="170cm">170cm</option>
+                        <option value="180cm">180cm</option>
+                        <option value="190cm">190cm</option>
+                        <option value="200cm">200cm</option>
+                        <option value="210cm">210cm</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    学历
+                </td>
+                <td>
+                    <select name="education">
+                        <option value="illiteracy">文盲</option>
+                        <option value="primary">小学</option>
+                        <option value="middle">初中</option>
+                        <option value="high">高中</option>
+                        <option value="college" selected="selected">大学</option>
+                        <option value="postgraduate">研究生</option>
+                        <option value="doctor">博士</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table>
+            月薪
+            <span>
+                <select name="salary">
+                    <option value="0~3000">0~3000</option>
+                    <option value="3000~6000">3000~6000</option>
+                    <option value="6000~10000">6000~10000</option>
+                    <option value="10000~20000">10000~20000</option>
+                    <option value="20000~">20000以上</option>
+                </select>
+            </span>
+        </table>
+        <table>
+            自我介绍
+            <span>
+                <input type="checkbox" name="introduction" value="filial">孝顺
+                <input type="checkbox" name="introduction" value="independent">独立
+                <input type="checkbox" name="introduction" value="simple">简单
+                <input type="checkbox" name="introduction" value="sunny">阳光
+                <input type="checkbox" name="introduction" value="low">低调
+            </span>
+            <br>
+            <span>
+                <input type="checkbox" name="introduction" value="humorous">幽默
+                <input type="checkbox" name="introduction" value="indoor">宅
+                <input type="checkbox" name="introduction" value="tall">高大
+                <input type="checkbox" name="introduction" value="healthy">健康
+                <input type="checkbox" name="introduction" value="fashion">潮
+            </span>
+            <br>
+            <span>
+                <input type="checkbox" name="introduction" value="fat">胖子
+                <input type="checkbox" name="introduction" value="Mic-king">麦霸
+                <input type="checkbox" name="introduction" value="workaholic">工作狂
+                <input type="checkbox" name="introduction" value="love-reading">看书
+                <input type="checkbox" name="introduction" value="love-travel">旅游
+            </span>
+        </table>
+        <table>
+            内心独白
+            <span>介绍一下自己，描述一下理想的伴侣，说说你对婚姻的期望</span><br>
+            <textarea name="introduce" rows="10" cols="30">我是一个典型的“宅男”，过着单位家里两点一线的生活，我不帅，但很体贴；会有一点点大男子主义，但通常都会设身处地为对方照相，跟我接触过你就会明白了。我是一个相信缘分的人，希望能找到一个开朗、有素养的女孩，我会用120%的心来疼你，期待你尽快出现在我身边！
+            </textarea>
+        </table>
+    </div>
+    <h2>个人信息</h2>
+    <hr>
+    <div class="content">
+        <table>
+            性别
+            <span>
+                <input type="radio" name="gender" value="male" checked> 男士
+                <input type="radio" name="gender" value="female"> 女士
+            </span>
+        </table>
+        <table>
+            年龄
+            <span>
+                <input type="text" name="age">至<input type="text" name="age">
+            </span>
+        </table>
+        <table>
+            工作地区
+            <span>
+                <input type="text" name="province" value="浙江省">
+                <input type="text" name="city" value="杭州市">
+            </span>
+        </table>
+        <table>
+            婚姻情况
+            <span>
+                <input type="radio" name="marital" value="unmarried" checked> 未婚
+                <input type="radio" name="marital" value="divorced"> 离异
+                <input type="radio" name="marital" value="widowed"> 丧偶
+            </span>
+        </table>
+        <table>
+            身高
+            <span>
+                <select name="stature">
+                    <option value="100cm">100cm</option>
+                    <option value="110cm">110cm</option>
+                    <option value="120cm">120cm</option>
+                    <option value="130cm">130cm</option>
+                    <option value="140cm">140cm</option>
+                    <option value="150cm">150cm</option>
+                    <option value="160cm" selected = "selected">160cm</option>
+                    <option value="170cm">170cm</option>
+                    <option value="180cm">180cm</option>
+                    <option value="190cm">190cm</option>
+                    <option value="200cm">200cm</option>
+                    <option value="210cm">210cm</option>
+                </select>至
+                <select name="stature">
+                    <option value="100cm">100cm</option>
+                    <option value="110cm">110cm</option>
+                    <option value="120cm">120cm</option>
+                    <option value="130cm">130cm</option>
+                    <option value="140cm">140cm</option>
+                    <option value="150cm">150cm</option>
+                    <option value="160cm" selected = "selected">160cm</option>
+                    <option value="170cm">170cm</option>
+                    <option value="180cm">180cm</option>
+                    <option value="190cm">190cm</option>
+                    <option value="200cm">200cm</option>
+                    <option value="210cm">210cm</option>
+                </select>
+            </span>
+           
+        </table>
+        <table>
+            学历
+            <span>
+                <select name="education">
+                    <option value="illiteracy">文盲</option>
+                    <option value="primary">小学</option>
+                    <option value="middle">初中</option>
+                    <option value="high">高中</option>
+                    <option value="college" selected="selected">大学</option>
+                    <option value="postgraduate">研究生</option>
+                    <option value="doctor">博士</option>
+                </select>
+            </span>  
+        </table>
+        <table>
+            月薪
+            <span>
+                <select name="salary">
+                    <option value="0">0</option>
+                    <option value="3000">3000</option>
+                    <option value="10000">10000</option>
+                    <option value="10000">10000</option>
+                    <option value="20000">20000</option>
+                </select>至
+                <select name="salary">
+                    <option value="0">0</option>
+                    <option value="3000">3000</option>
+                    <option value="10000">10000</option>
+                    <option value="10000">10000</option>
+                    <option value="20000">20000</option>
+                </select>
+            </span>
+        </table>
+        <table>
+            婚恋史
+            <span>
+                <input type="radio" name="marriage" value="none" checked> 无
+                <input type="radio" name="marriage" value="once"> 一次
+                <input type="radio" name="marriage" value="twice"> 两三次
+                <input type="radio" name="marriage" value="more"> 多次
+            </span>   
+        </table>
+        <table>
+            生子观
+            <span>
+                <input type="radio" name="children" value="needed" checked> 想要小孩
+                <input type="radio" name="children" value="unneeded"> 不想要小孩
+                <input type="radio" name="children" value="not-care"> 无所谓
+            </span>
+        </table>
+    </div>
+    <input type="submit" value="提交">
+</body>
+</html>

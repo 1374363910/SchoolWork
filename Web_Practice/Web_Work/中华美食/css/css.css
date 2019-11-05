@@ -1,0 +1,154 @@
+/* 全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body,
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* 导航栏样式 */
+.navbar-brand {
+  font-family: cursive;
+}
+
+/* 内容部分样式 */
+ .section-title h2{
+  margin-top: 100px;
+  font-family: cursive;
+}
+
+img {
+  width: 90%;
+}
+
+.videolist h3{
+    font-size: 20px;
+}
+.videolist p{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    font-size: 12px;
+}
+
+.videoed {
+  display: none;
+  width: 10%;
+  position: absolute;
+  left: 45%;
+  top: 40%;
+  z-index: 99;
+  border-radius: 100%;
+}
+
+.videos {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1000;
+  width: 70%;
+}
+
+video{
+    width: 100%;
+}
+
+
+.vclose {
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  width: 5%;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+
+
+#about {
+	padding: 0;
+	background: #f6f6f6;
+}
+#about h2::after {
+	bottom: 0;
+	margin-left: 0;
+	left: 0;
+}
+
+#about .about-img {
+    width: 100%;
+}
+#about p {
+	line-height: 24px;
+	margin: 15px 0;
+}
+.section-title {
+    margin-top: 50px;
+	margin-bottom: 50px;
+}
+.section-title .overlay {
+	padding: 80px 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+.section-title p {
+	font-size: 22px;
+}
+
+#poetry .poetry-item {
+	margin: 45px 0;
+	font-size: 18px;
+}
+#poetry .poetry-item-name {
+	font-weight: 400;
+	font-size: 20px;
+	color: #444;
+	margin-bottom: 10px;
+}
+#poetry .poetry-item-description {
+	font-size: 16px;
+	width: 85%;
+}
+
+#gallery {
+  padding: 0;
+}
+
+#gallery .gallery-item {
+  overflow: hidden;
+
+  position: relative;
+  height: 0;
+  padding-top:55%;
+
+}
+#gallery .gallery-item img{
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+footer{
+  background-color: #000000;
+}
+footer p{
+  font-size: 16px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
